@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int CheckArrayRotation(int arr[],int s){
+int CheckArrayRotation(int* arr,int s){
     int count = 0;
     for (int i=0;i<s;i++){
         if(arr[i] < arr[i+1]){
