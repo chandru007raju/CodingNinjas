@@ -17,9 +17,9 @@ int* RotateArray(int arr[],int s,int d){
             for(i=0;i<s-1;i++){
                 arr[i] = arr[i+1];
             }
-        //    arr[s-1]=arr[i];
-        //   OR
-            arr[i-1]=arr[i]; // this OR
+            // arr[i-1]=arr[i]; // this OR
+            // cout<<j<<endl;
+            // cout<<i<<endl;
             arr[i]= temp;
             j++;
         }
