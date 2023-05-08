@@ -25,53 +25,90 @@ void reverse(int input[], int start, int end)
     }
 }
 
-void rotate(int *input, int d, int n)
-{
-    // Write your code here
-    if (d >= n && n != 0)
-    {
-        d = d % n;
+void rotate(int *input, int d, int n){
+    if(n<=d && n!=0){
+        d = d%n;
     }
-    else if (n == 0)
-    {
+    else if(n==0){
         return;
     }
 
-    reverse(input, 0, n - 1);
-    reverse(input, 0, n - d - 1);
-    reverse(input, n - d, n - 1);
+    reverse(input,0,n-1);
+    reverse(input,0,n-d-1);
+    reverse(input,n-d,n-1);
 }
+// {
+//     // Write your code here
+//     if (d >= n && n != 0)
+//     {
+//         d = d % n;
+//     }
+//     else if (n == 0)
+//     {
+//         return;
+//     }
 
-int main()
-{
+//     reverse(input, 0, n - 1);
+//     reverse(input, 0, n - d - 1);
+//     reverse(input, n - d, n - 1);
+// }
+
+
+// int main()
+// {
+//     int t;
+//     cin >> t;
+
+//     while (t--)
+//     {
+//         int size;
+//         cin >> size;
+
+//         int *input = new int[size];
+
+//         for (int i = 0; i < size; ++i)
+//         {
+//             cin >> input[i];
+//         }
+
+//         int d;
+//         cin >> d;
+
+//         rotate(input, d, size);
+
+//         for (int i = 0; i < size; ++i)
+//         {
+//             cout << input[i] << " ";
+//         }
+
+//         delete[] input;
+//         cout << endl;
+//     }
+
+//     return 0;
+// }
+int main(){
     int t;
-    cin >> t;
+    cin>>t;
 
-    while (t--)
-    {
-        int size;
-        cin >> size;
+    while(t--){
+        int s;
+        cin>>s;
 
-        int *input = new int[size];
-
-        for (int i = 0; i < size; ++i)
-        {
-            cin >> input[i];
+        int *arr = new int[s];
+        for(int i=0;i<s;i++){
+            cin>>arr[i];
         }
-
         int d;
-        cin >> d;
+        cin>>d;
+        rotate(arr,d,s);
 
-        rotate(input, d, size);
-
-        for (int i = 0; i < size; ++i)
-        {
-            cout << input[i] << " ";
+        for(int i=0;i<s;i++){
+            cout<<arr[i]<<" ";
         }
-
-        delete[] input;
-        cout << endl;
+        delete[]arr;
+        cout<<endl;
     }
-
+    
     return 0;
 }
