@@ -56,7 +56,7 @@ public class LargestRowOrColumn {
         int largestSum = Integer.MIN_VALUE;
         int rows = mat.length;
         int index = 0;
-        if(rows==0){ //for blank array
+        if(rows == 0){ //for blank array
           System.out.println("row "+index+" "+ largestSum);
           return;
         }
