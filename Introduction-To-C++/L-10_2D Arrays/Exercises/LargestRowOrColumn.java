@@ -86,9 +86,9 @@ public class LargestRowOrColumn {
         }
         //Now check which has higher sum row or column
         if(isRow){
-            System.out.println("row "+index+ " "+largestSum);
+            System.out.println("row index "+ index + " has the largest sum:"+largestSum);
         }else{
-            System.out.println("column "+ index+ " "+ largestSum);
+            System.out.println("col index "+ index + " has the largest sum:"+largestSum);
         }        
 	}
 
@@ -96,7 +96,7 @@ public class LargestRowOrColumn {
 
 //main code to check the solution code
 public static void main(String[] args) {
-    int mat[][] = {{1, 1}, {1, 1}};
+    int mat[][] = {{1, 0, 8}, {1, 9, 9}};
     findLargest(mat); //ouput row 0 2
 
 }    
