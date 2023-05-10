@@ -36,7 +36,7 @@ cbd
 Sample Output 2:
 false
 */
-package Assignments;
+// package Assignments;
 public class CheckPermutation {
     //coding ninjas solution
     public static boolean isPermutation(String str1, String str2) {

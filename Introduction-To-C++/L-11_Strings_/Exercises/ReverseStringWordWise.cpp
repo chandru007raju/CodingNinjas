@@ -90,8 +90,8 @@ void reverse(char input[],int start,int end){
 
 void ReverseStringWordWise(char input[]){
 
-    int size = length(input);
-    reverse(input,0,size-1);
+    int size = length(input); //11 -->'\0'
+    reverse(input,0,size-1);  //10 --> " - '\0'"
 
     int start = 0;
     for(int i = 0;input[i] != '\0';i++){
