@@ -28,7 +28,7 @@ coding
 Sample Output 2:
 false
 */
-package Exercises;
+// package Exercises;
 public class StringPalindrome {
     //coding ninjas Solution
     public static boolean isPalindrome(String str) {
