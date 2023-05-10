@@ -33,7 +33,7 @@ co
 o
 */
 
-package Exercises;
+// package Exercises;
 public class AllPossibleSubStrings {
     //Coding Ninjas Solution Code
     public static void printSubstrings(String str) {

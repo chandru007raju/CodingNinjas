@@ -8,7 +8,7 @@
 //yz
 //z
 //xz is not a substring because it is not contiguous
-package Exercises;
+// package Exercises;
 public class AllSubStringsOfString {
     //solution code to print Substrings
     public static void printSubstrings(String str) 

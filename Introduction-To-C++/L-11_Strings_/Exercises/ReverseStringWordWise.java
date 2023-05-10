@@ -19,7 +19,7 @@ Sample Output 2
 code your indent Always
 */
 
-package Exercises;
+// package Exercises;
 public class ReverseStringWordWise {
     //coding ninjas solution code
     public static String reverseWordWise(String str) {

@@ -23,7 +23,7 @@ this is a sample string
 Sample Output 2:
 5
 */
-package Exercises;
+// package Exercises;
 public class CountWords{
     //coding ninjas solution
     public static int countWords(String str) {	
