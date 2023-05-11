@@ -91,11 +91,32 @@ string getCompressedString(string &input)
     return compressString;
 }
 
+string CompressedString(string str){ //  aaabbcccdd
+    int len = str.length();
+    string ans = "";
+    for(int i=0; i<len;i++){
+        int count = 1;// OR count = 49;--> Convert the integer count into a string variable to push this into the string
+        for(int j = i; j<len && str[j] == str[j+1];j++){
+            count++;
+            i++;
+        }
+        ans.push_back(str[i]);
+        if(count> 1){
+            ans.push_back(count + 48); // append zero as text
+            // OR
+            // ans.push_back(count + '0'); 
+
+        }
+    }
+    return ans;
+}
+
 int main()
 {
     int size = 1e6;
-    string str;
+    string str,str1,str2;
     cin >> str;
-    str = getCompressedString(str);
-    cout << str << endl;
+    str1= getCompressedString(str);
+    str2 = CompressedString(str);
+    cout << str1 <<" " <<str2<< endl;
 }

@@ -66,15 +66,8 @@
 #include<cstring>
 using namespace std;
 
-int length(char input[]){
-    int count = 0;
-    for(int i=0;input[i] != '\0';i++){
-        count++;
-    }
-    return count;
-}
 
-void reverse(char input[],int start,int end){
+void reverse( string input,int start,int end){
     int i = start;
     int j = end;
 
@@ -88,9 +81,11 @@ void reverse(char input[],int start,int end){
     
 }
 
-void ReverseStringWordWise(char input[]){
+void ReverseStringWordWise(string input){
 
-    int size = length(input); //11 -->'\0'
+    // int size = length(input); //11 -->'\0'
+    // OR
+    int size = input.length();  //11 -->'\0'
     reverse(input,0,size-1);  //10 --> " - '\0'"
 
     int start = 0;
@@ -106,9 +101,8 @@ void ReverseStringWordWise(char input[]){
 }
 
 int main(){
-    int s = 1e6;
-    char input[s];
-    cin.getline(input,s);
+    string input;
+    cin>>input;
     
     ReverseStringWordWise(input);
     cout << input << endl;

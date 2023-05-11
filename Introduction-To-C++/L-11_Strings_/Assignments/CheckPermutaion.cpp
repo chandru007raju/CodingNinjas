@@ -76,11 +76,32 @@ bool isPermutation(char input1[], char input2[])
     }
 }
 
+bool isPermutationn(char input[],char input1[]){
+    if(strlen(input) != strlen(input1)){
+        return false;
+    }
+    int sum1 = 0;
+    int sum2 = 0;
+    for(int i=0;input[i] != '\0';i++){
+        sum1 += input[i];
+        sum2 += input1[i];
+    }
+        if(sum1 == sum2){
+            return true;
+        }else{
+            return false;
+        }
+}
+
+
 int main()
 {
     int size = 1e6;
     char str1[size];
     char str2[size];
-    cin >> str1 >> str2;
-    cout << (isPermutation(str1, str2) ? "true" : "false");
+    cin>>str1;
+    cin.getline(str2,size);
+    cout << (isPermutation(str1, str2) ? "true" : "false")<<endl;
+    cout << (isPermutationn(str1,str2) ? "true": "false");
+
 }
