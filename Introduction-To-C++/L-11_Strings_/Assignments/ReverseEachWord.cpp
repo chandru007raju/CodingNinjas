@@ -56,8 +56,7 @@ void reverseEachWord(char input[])
     // Write your code here
     int size = strlen(input);
     int start = 0;
-    int end = 0;
-
+    
     for (int i = 0; input[i] != '\0'; i++)
     {
         if (input[i] == ' ')
@@ -72,11 +71,26 @@ void reverseEachWord(char input[])
     }
 }
 
+void reverseEachhWorddd(char str[]){
+    int size = strlen(str);
+    int index = 0;
+    for(int i=0;str[i] != '\0';i++){
+        if(str[i] == ' '){
+
+            strReverse(str,index,i-1);
+            index = i+1;
+        }else if(i == size-1){
+            strReverse(str,index,i);
+        }
+    }
+}
+
 int main()
 {
     int size = 1e6;
     char str[size];
     cin.getline(str, size);
     reverseEachWord(str);
+    reverseEachhWorddd(str);
     cout << str;
 }
