@@ -56,6 +56,19 @@ void removeAllOccurrencesOfChar(char input[], char c)
     input[index] = '\0';
 }
 
+void removeOccur(char str[],char c){
+    int j = 0;
+    for(int i=0; str[i] != '\0';i++){
+        if(str[i] == c){
+            continue;
+        }else{
+            str[j] = str[i];
+            j++;
+        }
+    }
+    str[j] = '\0';
+}
+
 int main()
 {
     int size = 1e6;
@@ -64,5 +77,6 @@ int main()
     char c;
     cin >> c;
     removeAllOccurrencesOfChar(str, c);
+    // removeOccur(str, c);
     cout << str;
 }

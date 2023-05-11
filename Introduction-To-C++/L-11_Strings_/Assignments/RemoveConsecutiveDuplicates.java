@@ -29,7 +29,7 @@ Sample Output 2:
 xyzx
 */
 
-package Assignments;
+// package Assignments;
 public class RemoveConsecutiveDuplicates {
     //coding ninjas solution
     public static String removeConsecutiveDuplicates(String str) {

@@ -51,9 +51,30 @@ void removeConsecutiveDuplicates(char input[])
         if (input[lastIndex] != input[i])
         {
             input[++lastIndex] = input[i];
+            // lastIndex++;
         }
     }
     input[lastIndex + 1] = '\0';
+}
+
+void RemoveRepeating(char str[]){
+    int j = 0;
+    for(int i=1; str[i]!='\0';i++){
+        if(str[j] != str[i]){
+
+            cout<<str<<endl;
+            cout<<str[0]<<" "<<str[1]<<" "<<str[2]<<" "<<str[3]<<endl;
+            cout<<j<<"-->";   
+
+            // str[++j] = str[i];
+            //OR
+            j++;          
+            str[j] = str[i];
+            
+            cout<<j<<endl;
+        }       
+    }
+    str[j+1] = '\0';
 }
 
 int main()
@@ -61,6 +82,7 @@ int main()
     int size = 1e6;
     char str[size];
     cin.getline(str,size);
-    removeConsecutiveDuplicates(str);
+    // removeConsecutiveDuplicates(str);
+    RemoveRepeating(str);
     cout << str;
 }

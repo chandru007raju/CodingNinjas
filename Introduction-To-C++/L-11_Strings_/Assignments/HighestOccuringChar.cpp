@@ -43,36 +43,72 @@ using namespace std;
 
 // #include "solution.h"
 
-char highestOccurringChar(char input[])
+char highestOccurringChar(char input[]) // input = --> cdd
 {
     // Write your code here
-    int freq[256] = {0};
-
+    int freq[256] = {0}; /*Total characters = 256  i.e includes @ 1 % _ A a everything --> we initialize the presence of these chars in array
+     to zero because the occurance of these chars in the input is equal to zero
+*/ 
     for (int i = 0; input[i] != '\0'; i++)
     {
-        freq[(int)input[i]] += 1;
-    }
+        // cout<<"before : "<<freq[(int)input[i]]<<endl;
+        freq[(int)input[i]] ++;  //Convert the char into int and increment the frequency of the resultant integer in the frequency Array; 
+        // cout<<"After : "<<freq[(int)input[i]]<<endl;
+        // cout<<(int)input[i]<<endl; // freq[99] will be incremented --> freq[(int)input[i]]++    i.e freq[99] ++
+        }
 
     char ans = input[0];
-    int count = freq[(int)input[0]];
+    int Maxcount = freq[(int)input[0]]; // Or you can assign this to -1 also...i.e the precence of that char in the input
 
     for (int i = 1; input[i] != '\0'; i++)
     {
         int occur = freq[(int)input[i]];
-        if (occur > count)
+        if (occur > Maxcount)
         {
             ans = input[i];
-            count = occur;
+            Maxcount = occur;
         }
     }
 
     return ans;
 }
+char HighOccur(char input[]){
+    int arr[256] = {0};
+    for(int i=0;input[i] != '\0';i++){
+        arr[(int)input[i]] ++;
+    }
+    char ans = input[0];
+    int count = arr[(int)input[0]];
+
+    for(int i=0;i<input[i] != '\0';i++){
+        int occur = arr[(int)input[i]];
+        if(occur>count){
+            ans = input[i];
+            count = occur;
+        }
+    }
+    return ans;
+
+
+}
+
+// int main()
+// {
+//     
+//     string str; //string Type
+//     cin>>str;
+//     cout << highestOccurringChar(str);
+// }
+
+//OR 
 
 int main()
 {
     int size = 1e6;
-    char str[size];
-    cin >> str;
-    cout << highestOccurringChar(str);
+    char str[size]; //  Chararcter Array Type
+    cin.getline(str,size);
+    cout << highestOccurringChar(str)<<endl;
+    cout<<HighOccur(str);
+    
 }
+
