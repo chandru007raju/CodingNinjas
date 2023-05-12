@@ -39,8 +39,17 @@ int main(){
     array = new int*[row];
     for(int i=0;i<row;i++){
         array[i] = new int[col]; //--> the address of 1 st element of array is array[0],this contains a pointer where a array can be stored. we will assign this to a array of integer type.
+        for(int j=0;j<col;j++){
+            cin>>array[i][j];
+        }
 
-    }
+    }   
+    for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                    cout<<array[i][j]<<" ";
+                }
+                cout<<endl;
+        }
 
     // after this the memory allocated in the heap must be cleared manually so we use the delete statement to release the allocated memory address.
     for(int i=0;i<row;i++ ){
