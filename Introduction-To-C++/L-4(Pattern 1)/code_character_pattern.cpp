@@ -42,20 +42,40 @@ Sample Output 2:
 #include <iostream>
 using namespace std;
 
-int main()
-{
+// int main()
+// {
 
-    /*  Read input as specified in the question.
-     * Print output as specified in the question.
-     */
+//     /*  Read input as specified in the question.
+//      * Print output as specified in the question.
+//      */
+//     int n;
+//     cin >> n;
+//     for (int i = 0; i < n; i++)
+//     {
+//         for (int j = 0, k = ('A' + i); j <= i; j++, k++)
+//         {
+//             cout << (char)k;
+//         }
+//         cout << endl;
+//     }
+// }
+
+
+int main(){
     int n;
-    cin >> n;
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0, k = ('A' + i); j <= i; j++, k++)
-        {
-            cout << (char)k;
+    cin>>n;
+
+    int row = 1;
+
+    while(row<=n){
+        int col = 1;
+        char ch = 'A'+ row -1;
+        while(col <= row){
+            cout<<ch;
+            ch++;
+            col++;
         }
-        cout << endl;
+        row++;
+        cout<<endl;
     }
 }
