@@ -1,9 +1,8 @@
-package lecture6;
+// package lecture6;
 import java.util.Scanner;
 public class IsoscelesTrainglePattern {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner s = new Scanner(System.in);
 		int n = s.nextInt();
 		int rows = 1;
@@ -35,3 +34,4 @@ public class IsoscelesTrainglePattern {
 	}
 
 }
+

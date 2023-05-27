@@ -33,12 +33,11 @@ Sample Output 2:
  ***
   *
 */  
-package lecture6.Exercises;
+// package lecture6.Exercises;
 import java.util.Scanner;
 public class DiamondOfStars {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner s = new Scanner(System.in);
 		int n = s.nextInt();
 		int firstHalf=(n+1)/2;
