@@ -38,16 +38,16 @@ int main()
     int n;
     cin >> n;
 
-    int t1 = 1;
-    int t2 = 1;
-    int t3 = 0;
+    int t1 = 1; //a
+    int t2 = 1; //b
+    int t3 = 0; //c
 
-    for (int i = 2; i <= n; i++)
+    for (int i = 1; i < n; i++)
     {
-        t3 = t1 + t2;
-        t1 = t2;
-        t2 = t3;
+        t3 = t1 + t2; //c = a+b
+        t1 = t2; //a = b;
+        t2 = t3; //b = c;
     }
 
-    cout << t1 << endl;
+    cout << t1 << endl; //a
 }

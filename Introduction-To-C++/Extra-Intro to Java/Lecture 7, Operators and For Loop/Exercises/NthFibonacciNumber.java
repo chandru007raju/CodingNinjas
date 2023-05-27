@@ -20,12 +20,11 @@ Sample Input 1:
 Sample Output 2:
 8
 */
-package lecture7.Exercises;
+// package lecture7.Exercises;
 import java.util.Scanner;
 public class NthFibonacciNumber {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		 Scanner s = new Scanner(System.in);
 	        int n = s.nextInt();
 	        int a = 0;
