@@ -29,8 +29,7 @@ int main (){
             decrease++;
 
         }
-
-        
+       
 
         cout<<endl;
         row++;
