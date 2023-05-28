@@ -8,7 +8,7 @@ int arrange(int array[],int size) {
     while(start<=endindex){
         array[start] = printvalue;
         printvalue++;
-        if(start == endindex){
+        if(start == endindex){ // Check Case
             break;
         }
         else{
