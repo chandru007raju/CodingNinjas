@@ -29,7 +29,7 @@ xy
 Sample Output 2:
 x
 */
-package Assignments;
+
 public class HighestOccuringCharacter {
     //coding ninjas solution
     public static char highestOccuringChar(String str) {

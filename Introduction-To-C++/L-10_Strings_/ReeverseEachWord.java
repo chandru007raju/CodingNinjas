@@ -2,7 +2,7 @@
 //output         cba fed ihg, 
 //there is only space between strings,
 //there is no extra space at the beginning or at the end.
-public class ReverseEachWord{
+public class ReeverseEachWord{
     public static String reverseEachWord(String str){
         String ans = "";
         int currentWordStart = 0;

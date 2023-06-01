@@ -28,7 +28,7 @@ aaabbcddeeeee
 Sample Output 2:
 a3b2cd2e5
 */
-package Assignments;
+
 public class CompressString {
     //coding ninjas solution code
     public static String getCompressedString(String str) {

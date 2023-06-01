@@ -1,3 +1,5 @@
+
+
 /*
 Remove Consecutive Duplicates
 
@@ -28,8 +30,6 @@ xxyyzxx
 Sample Output 2:
 xyzx
 */
-
-// package Assignments;
 public class RemoveConsecutiveDuplicates {
     //coding ninjas solution
     public static String removeConsecutiveDuplicates(String str) {

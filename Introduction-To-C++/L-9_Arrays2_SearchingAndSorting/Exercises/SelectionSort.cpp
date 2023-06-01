@@ -1,12 +1,12 @@
 #include <iostream>
 using namespace std;
 void selectionSort(int arr[],int s){
-    for(int i=0;i<s;i++){
+    for(int i=0;i<s-1;i++){
         int min = arr[i];
         int minindex = i;
 
         for(int j = i+1;j<s;j++){
-            if(arr[j]< arr[i]){
+            if(arr[j]< min){
                 min = arr[j];
                 minindex = j;
             }            

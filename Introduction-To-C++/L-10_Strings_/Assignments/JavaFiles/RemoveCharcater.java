@@ -27,7 +27,7 @@ y
 Sample Output 2:
 xxzxx
 */
-package Assignments;
+
 public class RemoveCharcater {
     //coding ninjas Solution
     public static String removeAllOccurrencesOfChar(String str, char ch) {

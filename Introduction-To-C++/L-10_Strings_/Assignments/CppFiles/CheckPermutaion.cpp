@@ -99,6 +99,7 @@ int main()
     int size = 1e6;
     char str1[size];
     char str2[size];
+    cout<<"Enter str"<<endl;
     cin>>str1;
     cin.getline(str2,size);
     cout << (isPermutation(str1, str2) ? "true" : "false")<<endl;

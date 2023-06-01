@@ -24,7 +24,7 @@ Sample Output 2:
 syawlA tnedni ruoy edoc
 */
 
-package Assignments;
+
 public class ReverseEachWord {
     //coding ninjas solution code
     //a private function to reverse Each Word

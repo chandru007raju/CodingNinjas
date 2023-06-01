@@ -22,12 +22,11 @@ int LargestSumCol(int** input,int row,int col){
         int sum = 0;
         for(int i=0;i<row;i++){
             sum = sum + input[i][j];
-            
+        }    
             if(sum > large){
                 large = sum;
-            }
-            
-        }
+            }           
+        
         cout<<" col "<<j+1<<" sum = "<<sum<<endl;
     }
     return large;

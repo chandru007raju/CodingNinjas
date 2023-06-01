@@ -1,3 +1,4 @@
+// package Exercises;
 /*
 Print All Substrings
 
@@ -33,7 +34,7 @@ co
 o
 */
 
-// package Exercises;
+
 public class AllPossibleSubStrings {
     //Coding Ninjas Solution Code
     public static void printSubstrings(String str) {

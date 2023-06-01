@@ -9,7 +9,7 @@ void sortZerosAndOnes(int* arr,int s){
         if(arr[i] == 0){
             i++;
         }
-        else if(arr[j] == 1){
+        if(arr[j] == 1){
             j--;
         }
         if(arr[i] > arr[j]){

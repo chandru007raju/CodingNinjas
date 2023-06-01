@@ -1,3 +1,6 @@
+
+
+
 /*
 Check Permutation
 
@@ -36,10 +39,11 @@ cbd
 Sample Output 2:
 false
 */
-// package Assignments;
-public class CheckPermutation {
-    //coding ninjas solution
-    public static boolean isPermutation(String str1, String str2) {
+
+
+public class checkpermutation1 {
+     //coding ninjas solution
+     public static boolean isPermutation(String str1, String str2) {
 		//Your code goes here
         if(str1.length() != str2.length()){
             return false;
