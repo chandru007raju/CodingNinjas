@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-void swap(int arr[], int n,int n1,int n2){
+void swap(int arr[],int n1,int n2){
     int temp = arr[n1];
     arr[n1] = arr[n2];
     arr[n2] = temp; 
@@ -13,11 +13,11 @@ void swap1(int arr[],int n){
     int i = 0;
     while(i<=l){
         if(arr[i] == 0){
-            swap(arr,n,s,i);
+            swap(arr,s,i);
             s++;
             i++;
         }else if(arr[i] == 2){
-            swap(arr,n,l,i);
+            swap(arr,l,i);
             l--;
         }else{
             i++;
