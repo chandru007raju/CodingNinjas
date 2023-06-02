@@ -13,7 +13,6 @@ void pushZeroesEnd(int *input, int size)
             j++;
         }
     }
-
 }
 
 int main()

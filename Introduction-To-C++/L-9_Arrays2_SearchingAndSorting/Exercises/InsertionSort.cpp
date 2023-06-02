@@ -17,6 +17,21 @@ void InsertionSort(int arr[],int s){
 
 }
 
+void InnSortt(int arr[],int n){
+    for(int i=1;i<n;i++){
+        int curr = arr[i];
+        int j;
+        for( j=i-1;j>=0;j--){
+            if(arr[j] > curr){
+                arr[j+1] = arr[j];
+            }else{
+                break;
+            }
+        }
+        arr[j+1] = curr;
+    }
+}
+
 int main()
 {
     int arr[] = {5, 7, 4, 6, 2,8,9};
@@ -28,6 +43,7 @@ int main()
     cout << endl;
 
     InsertionSort(arr, 7);
+    InnSortt(arr, 7);
 
     for (int i = 0; i < 7; i++)
     {
