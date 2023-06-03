@@ -91,6 +91,6 @@ int main()
     char str[size];
     cin.getline(str, size);
     reverseEachWord(str);
-    reverseEachhWorddd(str);
+    // reverseEachhWorddd(str);
     cout << str;
 }

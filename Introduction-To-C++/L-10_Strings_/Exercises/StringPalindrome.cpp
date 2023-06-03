@@ -48,3 +48,36 @@ int main(){
     
     cout<<StrPallindrome(input);
 }
+
+/*
+#include<iostream>
+#include<string.h>
+using namespace std;
+
+bool checkPallindrome(string s1){
+    bool ispalli  =true;
+    int size = s1.length();
+    // cout<<size<<endl;
+    int s = 0;
+    int e = size-1;
+    // cout<<e<<endl;
+    while(s<=e){
+        if(s1[s] != s1[e]){
+            ispalli = false;
+            break;
+        }else{
+            s++;
+            e--;
+        }
+    }
+    return ispalli;
+}
+
+int main(){
+    string s1;
+    cin>>s1;
+
+    cout<<checkPallindrome(s1);
+}
+*/
+

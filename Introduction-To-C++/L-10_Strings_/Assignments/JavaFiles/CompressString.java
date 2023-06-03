@@ -59,7 +59,7 @@ public class CompressString {
 
     //driver code to check for solution
     public static void main(String[] args) {
-        String str = "aaaddd";
+        String str = "aaaaaaaaaaaaaa";
         System.out.println(getCompressedString(str)); //a3d3
     
 }

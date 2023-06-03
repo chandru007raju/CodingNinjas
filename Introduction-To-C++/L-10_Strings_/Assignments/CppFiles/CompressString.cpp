@@ -91,7 +91,7 @@ string getCompressedString(string &input)
     return compressString;
 }
 
-string CompressedString(string str){ //  aaabbcccdd
+string CompressedString(string str){ //  aaabbcccdd -->a3b2c3d2
     int len = str.length();
     string ans = "";
     for(int i=0; i<len;i++){
