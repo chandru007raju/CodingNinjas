@@ -1,21 +1,40 @@
 #include<iostream>
 using namespace std;
-int main ()
-{
-  int numbers[5];
-  int * p;
-  p = numbers; 
-  *p = 10;
-  p = &numbers[2]; 
-  *p = 20;
-  p--; 
-  *p = 30;
-  p = numbers + 3;
-  *p = 40;
-  p = numbers;
-  *(p+4) = 50;
-  for (int n=0; n<5; n++) {
-     cout << numbers[n] << ",";
-  }
-  return 0;
+
+int Arraysum(int a[],int n,int k,int arr[]){
+
+    if(n == 0)   {
+        return 0;
+    }
+    int ans = Arraysum(a +1,n-1,k,arr);
+    for(int i=0;i<ans;i++){
+        arr[i]++;
+    }
+
+    if(a[0] == k){
+        for(int i = ans-1;i>=0;i--){
+            arr[i+1] = arr[i];
+        }
+        arr[0] = 0;
+        return ans + 1;
+    }
+    return ans;
+
+}
+int main(){
+    int n,k;
+    cin>>n>>k;
+
+
+    int * a = new int [n];
+    int arr[10];
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+
+    int ans = Arraysum(a,n,k,arr);
+    cout<<ans<<endl;
+    for(int i=0;i<ans;i++){
+        cout<<arr[i]<<" ";
+    }
 }
