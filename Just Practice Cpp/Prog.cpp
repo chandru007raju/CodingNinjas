@@ -1,40 +1,27 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-int Arraysum(int a[],int n,int k,int arr[]){
+class Student{
+    public :
+        char *name;
+        int rollNo;
 
-    if(n == 0)   {
-        return 0;
-    }
-    int ans = Arraysum(a +1,n-1,k,arr);
-    for(int i=0;i<ans;i++){
-        arr[i]++;
-    }
-
-    if(a[0] == k){
-        for(int i = ans-1;i>=0;i--){
-            arr[i+1] = arr[i];
+        void print(){
+            cout << name << " "  <<  rollNo << " ";
         }
-        arr[0] = 0;
-        return ans + 1;
-    }
-    return ans;
+};
 
-}
-int main(){
-    int n,k;
-    cin>>n>>k;
+int main() {
+    char name[] = "Misha";
+    Student s1;
+    s1.name = name; // This just copies the address of the Array --> so changes to the array reflects everywhere it is bieng used.
+    s1.rollNo = 101;
 
+    name[0] = 'N';
+    Student s2;
+    s2.name = name; // This just copies the address of the Array --> so changes to the array reflects everywhere it is bieng used.
+    s2.rollNo = 102;
 
-    int * a = new int [n];
-    int arr[10];
-    for(int i=0;i<n;i++){
-        cin>>a[i];
-    }
-
-    int ans = Arraysum(a,n,k,arr);
-    cout<<ans<<endl;
-    for(int i=0;i<ans;i++){
-        cout<<arr[i]<<" ";
-    }
+    s1.print();
+    s2.print();
 }
