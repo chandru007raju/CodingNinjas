@@ -15,6 +15,26 @@ public:
 
 using namespace std;
 
+Node * insert (Node * head,int i,int data){
+    if(head == NULL){
+        if(i == 0){
+            Node * newNode  = new Node (data);
+            head = newNode;
+        }
+        return head;
+    }
+    Node * temp = insert(head-> next,i-1,data);
+    head->next = temp;
+
+    if(i == 0){
+        Node * newNode = new Node (data);  
+        newNode->next = head;          
+        head = newNode;
+    }
+    return head;
+        
+}
+
 // Node *insertNode(Node *head, int i, int data)
 // {
 //     if (head == NULL)
@@ -37,18 +57,6 @@ using namespace std;
 //     }
 //     return head;
 // }
-
-
-
-
-
-
-
-
-
-
-
-
 
 Node * insertNode(Node * head,int i,int data){
     if(head == NULL){
@@ -117,6 +125,9 @@ int main()
         int pos, data;
         cin >> pos >> data;
         head = insertNode(head, pos, data);
+        //OR
+        // head = insert(head, pos, data);
+
         print(head);
     }
 }
