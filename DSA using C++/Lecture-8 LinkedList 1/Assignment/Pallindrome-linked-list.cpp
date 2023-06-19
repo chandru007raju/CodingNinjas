@@ -21,13 +21,13 @@ bool isPaalindrome(Node *head)
     {
         return true;
     }
-    Node *fast = head, *slow = head;
+    Node *fast = head, *slow = head; // MidPoint Of Linked List -->
     while (fast->next != NULL && fast->next->next != NULL)
     {
         fast = fast->next->next;
         slow = slow->next;
     }
-    Node *secondHalf = slow->next;
+    Node *secondHalf = slow->next; // 1 --> 2 -->> 3 --> 4 
     slow->next = NULL;
 
     Node *pre = NULL, *curr = secondHalf, *nex = secondHalf;
