@@ -30,17 +30,20 @@ Node *appendLastNToFirst(Node *head, int n)
         temp = temp->next;
         length++;
     }
-    
-    temp->next = head;
+
+    temp->next = head; // we made this circular now
+
     int i = length - n;
-    temp = head;
+
+    temp = head; // Re initialized temp;
+    
     while (i > 1 && temp != NULL)
     {
         temp = temp->next;
         i--;
     }
     Node *newHead = temp->next;
-    temp->next = NULL;
+    temp->next = NULL; // we break the circular to normal linked List 
     return newHead;
 }
 
