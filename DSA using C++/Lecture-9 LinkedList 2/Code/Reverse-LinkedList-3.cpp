@@ -16,8 +16,7 @@ public:
 using namespace std;
 
 /*
-
-Node *reverseLinkedListRec(Node *head)  // TPYE-1
+Node *reverseLinkedListRec(Node *head) // TYPE- 1
 {
     if (head == NULL || head -> next == NULL){
         return head;
@@ -33,50 +32,21 @@ Node *reverseLinkedListRec(Node *head)  // TPYE-1
 }
 */
 
-// O(n) but using extra space  //TYPE - 2
 
-class Pair{  
-    public:
-    Node *head;
-    Node *tail;
-};
-
-Pair helper(Node *head){
-    if (head == NULL || head -> next == NULL){
-        Pair ans;
-        ans.head = head;
-        ans.tail = head;
-        return ans;
-    }
-    
-    Pair smallAns = helper(head -> next);
-    smallAns.tail -> next = head;
-    head -> next = NULL;
-    Pair ans;
-    ans.head = smallAns.head;
-    ans.tail = head;
-    return ans;
-}
+// O(n) no extra space --> TYPE -3
 
 Node *reverseLinkedListRec(Node *head){
-    return helper(head).head;
+    
+    if (head == NULL || head -> next == NULL){
+        return head;
+    }
+	Node * smallOutput = reverseLinkedListRec(head -> next);
+	head -> next -> next = head;
+    head -> next = NULL;
+    return smallOutput;
 }
 
-/*
 
-// O(n) no extra space
-// Node *reverseLinkedListRec(Node *head){  // TYPE - 3
-    
-//     if (head == NULL || head -> next == NULL){
-//         return head;
-//     }
-// 	Node * smallOutput = reverseLinkedListRec(head -> next);
-// 	head -> next -> next = head;
-//     head -> next = NULL;
-//     return smallOutput;
-// }
-
-*/
 
 Node *takeinput()
 {

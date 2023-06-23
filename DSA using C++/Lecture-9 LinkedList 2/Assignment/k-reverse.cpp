@@ -15,68 +15,58 @@ public:
 
 using namespace std;
 
-/*
-
-Node *reverseLinkedListRec(Node *head)  // TPYE-1
+class Pair
 {
-    if (head == NULL || head -> next == NULL){
-        return head;
-    }
-	Node * smallOutput = reverseLinkedListRec(head -> next);
-	Node * temp = smallOutput;
-    while (temp -> next != NULL){
-        temp = temp -> next;
-    }
-    temp -> next = head;
-    head -> next = NULL;
-    return smallOutput;
-}
-*/
-
-// O(n) but using extra space  //TYPE - 2
-
-class Pair{  
-    public:
+public:
     Node *head;
     Node *tail;
 };
-
-Pair helper(Node *head){
-    if (head == NULL || head -> next == NULL){
+Pair reverse(Node *head)
+{
+    if (head == NULL || head->next == NULL)
+    {
         Pair ans;
         ans.head = head;
         ans.tail = head;
         return ans;
     }
-    
-    Pair smallAns = helper(head -> next);
-    smallAns.tail -> next = head;
-    head -> next = NULL;
+    Pair smallAns = reverse(head->next);
+    smallAns.tail->next = head;
+    head->next = NULL;
     Pair ans;
     ans.head = smallAns.head;
     ans.tail = head;
     return ans;
 }
+Node *kReverse(Node *head, int k)
+{
+    if (head == NULL)
+    {
+        return head;
+    }
+    if (k == 0 || k == 1)
+    {
+        return head;
+    }
 
-Node *reverseLinkedListRec(Node *head){
-    return helper(head).head;
+    Node *temp = head;
+    int count = 0;
+    while (temp != NULL && count != k - 1)
+    {
+        temp = temp->next;
+        count++;
+    }
+    Node *head2 = NULL;
+    if (temp != NULL)
+    {
+        head2 = temp->next;
+        temp->next = NULL;
+    }
+    Node *newHead = kReverse(head2, k);
+    Pair ans = reverse(head);
+    ans.tail->next = newHead;
+    return ans.head;
 }
-
-/*
-
-// O(n) no extra space
-// Node *reverseLinkedListRec(Node *head){  // TYPE - 3
-    
-//     if (head == NULL || head -> next == NULL){
-//         return head;
-//     }
-// 	Node * smallOutput = reverseLinkedListRec(head -> next);
-// 	head -> next -> next = head;
-//     head -> next = NULL;
-//     return smallOutput;
-// }
-
-*/
 
 Node *takeinput()
 {
@@ -120,7 +110,9 @@ int main()
     while (t--)
     {
         Node *head = takeinput();
-        head = reverseLinkedListRec(head);
+        int k;
+        cin >> k;
+        head = kReverse(head, k);
         print(head);
     }
 
