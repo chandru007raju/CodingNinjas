@@ -1,12 +1,15 @@
 
 #include <iostream>
+// #include "stack-using-array.cpp"
+#include "StackLLT.cpp" // You Can Use This Or You Can Use The InBuilt Library called Stack
+
 #include <string>
-#include <stack>
+// #include <bits/stdc++.h>
 using namespace std;
 
 bool isBalanced(string expression)
 {
-    stack<char> s;
+    StackLLT<char> s;
     for (int i = 0; expression[i] != '\0'; i++)
     {
         if (expression[i] == '(')
@@ -15,7 +18,7 @@ bool isBalanced(string expression)
         }
         else if (expression[i] == ')')
         {
-            if (s.empty())
+            if (s.isEmpty())
             {
                 return false;
             }
@@ -29,7 +32,7 @@ bool isBalanced(string expression)
             }
         }
     }
-    return (s.empty() ? true : false);
+    return (s.isEmpty() ? true : false);
 }
 
 int main()
