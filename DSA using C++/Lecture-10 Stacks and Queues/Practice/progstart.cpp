@@ -1,10 +1,21 @@
 #include <iostream>
 using namespace std;
 
+template <typename T> 
 class Array{
+
+    private:
     int * data;
     int nextIndex;
     int capacity;
+
+// -----> Using Templates -->
+/*
+class ArrayT{
+    T * data;
+    int nextIndex;
+    int capacity;
+*/
 
 
     public:
@@ -16,11 +27,20 @@ class Array{
         capacity = totalSize;
     }
     */
+
     Array(){ // -->1 -->2 -->3 -->4
         data = new int[4];
         nextIndex = 0;
         capacity = 4;
     }
+
+/*
+    ArrayT(){ // -->1 -->2 -->3 -->4
+        data = new T[4];
+        nextIndex = 0;
+        capacity = 4;
+    }
+*/
 
     // Previously we were doing this --> Static Memory
 
@@ -36,10 +56,10 @@ class Array{
 
 //  Previous --> Static Memory --> Now Dynamically -->
 
-    void push(int A){
+    void push(int A){ // void push(T A)
         if(nextIndex == capacity){
             cout<<"stack is Full --> so we have increased the size of array dynamically and inserted ur element"<<endl;
-            int *newData = new int [capacity*2];
+            int *newData = new int [capacity*2];// T *newData = new T[capacity *2]
             for (int i = 0; i < capacity; i++){
                 newData[i] = data[i];
             }
@@ -52,7 +72,7 @@ class Array{
     }
 
 
-    int pop(){
+    int pop(){ // T pop()
         if(nextIndex == 0){
             cout<<"Stack Empty"<<endl;
             return 0;
@@ -69,7 +89,7 @@ class Array{
         return (nextIndex == 0);// if nextIndex == 0 the it returns true or 1;
     }
 
-    int top(){
+    int top(){// T top
         if(isEmpty()){
             return 0;
         }
