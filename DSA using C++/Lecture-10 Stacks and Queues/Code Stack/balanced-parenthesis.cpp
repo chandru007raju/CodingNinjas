@@ -1,13 +1,13 @@
 
 #include <iostream>
 // #include "stack-using-array.cpp"
-#include "StackLLT.cpp" // You Can Use This Or You Can Use The InBuilt Library called Stack
+#include "StackLLT.cpp" // You Can Use This Or You Can Use The InBuilt Library called Stack by including the stack header file
 
 #include <string>
 // #include <bits/stdc++.h>
 using namespace std;
 
-bool isBalanced(string expression)
+bool isBalanced(string expression) // (a+b(c)) -->input
 {
     StackLLT<char> s;
     for (int i = 0; expression[i] != '\0'; i++)
