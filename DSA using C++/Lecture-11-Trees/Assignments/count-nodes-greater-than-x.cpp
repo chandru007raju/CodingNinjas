@@ -101,3 +101,27 @@ int main()
     cin >> x;
     cout << getLargeNodeCount(root, x);
 }
+
+//Practice -->
+ 
+ /*
+
+int getLargeNodeCount(TreeNode<int> *root, int x)
+{
+    if(root == NULL){
+        return 0;
+    }
+    int count = 0;
+    for(int i=0;i<root->children.size();i++){
+
+        count += getLargeNodeCount(root->children[i],x);
+    }
+    if(root->data > x){
+        return count +1;
+    }
+
+    return count;
+
+}
+
+*/
