@@ -69,44 +69,31 @@ TreeNode<int> *takeInputLevelWise()
     return root;
 }
 
-/*
-    if (root == NULL)
-    {
-        return 0;
-    }
-    int h = 0;
-    for (int i = 0; i < root->children.size(); i++)
-    {
-        int childH = getHeight(root->children[i]);
-        if (childH > h)
-        {
-            h = childH;
-        }
-    }
-    return h + 1;
-*/
 
-int getHeight(TreeNode<int> *root)
-{
-    if (root == NULL)
-    {
-        return 0;
+void printAtLevelK(TreeNode<int>* root,int k){
+
+    if(root == NULL){
+        return;
     }
-    int h = 0;
-    for (int i = 0; i < root->children.size(); i++)
-    {
-        int childH = getHeight(root->children[i]);
-        if (childH > h)
-        {
-            h = childH;
-        }
+
+    if(k == 0){
+        cout<<root->data<<" ";
+        return;
     }
-    return h + 1;
+
+    for(int i=0;i<root->children.size();i++){
+
+    printAtLevelK(root->children[i],k-1);
+
+    }
 }
 
 int main()
 {
     TreeNode<int> *root = takeInputLevelWise();
-    cout << getHeight(root);
+    cout<<" enter k"<<endl;
+    int k;
+    cin>>k;
+    printAtLevelK(root,k);
 }
 
