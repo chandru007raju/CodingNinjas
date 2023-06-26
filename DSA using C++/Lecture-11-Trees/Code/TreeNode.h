@@ -5,10 +5,10 @@ template<typename T>
 class TreeNode {
     public:
     T data;
-    vextor<TreeNode<int>*> children;
+    vector<TreeNode<int>*> children;
 
-        TreeNode(data){
-        this.data = data;
+        TreeNode(T data){
+        this->data = data;
     }
 
 };
