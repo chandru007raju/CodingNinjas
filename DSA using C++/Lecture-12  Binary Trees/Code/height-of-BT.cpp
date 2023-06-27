@@ -37,23 +37,7 @@ BinaryTreeNode<int>* inputBTLevelWise(){
     }
     return root;
 }
-/*
-void printBTree(BinaryTreeNode<int>* root){
-    if (root == NULL){
-        return;
-    }
-    cout << root -> data << ": ";
-    if (root -> left != NULL){
-        cout << "L" << root -> left -> data;
-    }
-    if (root -> right != NULL){
-        cout << "R" << root -> right -> data;
-    }
-    cout << endl;
-    printBTree(root -> left);
-    printBTree(root -> right);
-}
-*/
+
 
 void printBTreeLevelWise(BinaryTreeNode<int> * root){
     if(root == NULL){
@@ -88,58 +72,50 @@ void printBTreeLevelWise(BinaryTreeNode<int> * root){
     }
 }
 
-int count(BinaryTreeNode<int> * root){
+int getHeightBT(BinaryTreeNode<int> * root){
     if(root == NULL){
         return 0;
     }
-/*
-    int ans = 0;
-    ans += count(root->left);
-    ans +=count(root->right);
-    return 1 + ans;
-*/
-    //OR
-    return 1 + count(root->left) + count(root->right);
-}
-
-bool isNodePresent(BinaryTreeNode <int> * root,int key){
-    
-    if(root == NULL){
-        return false;
-    }
-    if(root->data == key){
-        return true;
-    }
-    bool smallOutput1,smallOutput2;
-    if(root->left){
-        smallOutput1 = isNodePresent(root->left,key);
-    }if(root->right){
-        smallOutput2 = isNodePresent(root->right,key);
-    }
-    
-    
-    if(smallOutput1 == 1 || smallOutput2 == 1){
-        return true;
+    int leftHeight = getHeightBT(root->left);
+    int rightHeight = getHeightBT(root->right);
+    if (leftHeight > rightHeight)
+    {
+        return leftHeight + 1;
     }
 
-    return false;
+    return rightHeight + 1;
+
 }
+
 
 int main(){
     BinaryTreeNode<int>* root = inputBTLevelWise();
     cout<<endl;
-    // printBTree(root);
     printBTreeLevelWise(root);
 
-    cout<<" count of Nodes :"<<count(root)<<endl;
-
-    cout<<"Enter the Key to search for :";
-    int key;
-    cin>>key;
-    cout<<key<<" Present :";
-    cout<<(isNodePresent(root,key)? "true": "false");
+    cout<<"Height of BT :"<< getHeightBT(root);
 
     delete root;
 
     return 0;
 }
+
+/*
+int getHeight(TreeNode<int> *root)
+{
+    if (root == NULL)
+    {
+        return 0;
+    }
+    int h = 0;
+    for (int i = 0; i < root->children.size(); i++)
+    {
+        int childH = getHeight(root->children[i]);
+        if (childH > h)
+        {
+            h = childH;
+        }
+    }
+    return h + 1;
+}
+*/
