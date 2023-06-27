@@ -37,52 +37,7 @@ BinaryTreeNode<int>* inputBTLevelWise(){
     }
     return root;
 }
-
 /*
-        Practice --> -->
-BinaryTreeNode<int>* inputBTLevelWise(){
-
-    int RootData;
-    cout<<"Enter Root Data"<<endl;
-    cin>> RootData;
-    if(RootData == -1){
-        return NULL;
-    }
-    BinaryTreeNode <int> * root = new BinaryTreeNode <int> (RootData) ;
-
-    queue <BinaryTreeNode<int>*> pendingNodes;
-
-    pendingNodes.push(root);
-
-    while(pendingNodes.size() != 0){
-        BinaryTreeNode <int> * front = pendingNodes.front();
-        pendingNodes.pop();
-
-        cout << "Enter Left child of " << front -> data << ": ";
-        int LeftChild;
-        cin>>LeftChild;
-
-        if(LeftChild != -1){
-            BinaryTreeNode <int> * Lchild = new BinaryTreeNode<int> (LeftChild);
-            front->left = Lchild;
-            pendingNodes.push(Lchild);
-        }
-
-        int rightChild;
-        cout << "Enter right child of " << front -> data << ": ";
-        cin >> rightChild;
-        if (rightChild != -1){
-            BinaryTreeNode<int>* Rchild = new BinaryTreeNode<int>(rightChild);
-            front -> right = Rchild;
-            pendingNodes.push(Rchild);
-        }
-    }
-    return root;
-
-}
-
-*/
-
 void printBTree(BinaryTreeNode<int>* root){
     if (root == NULL){
         return;
@@ -98,10 +53,46 @@ void printBTree(BinaryTreeNode<int>* root){
     printBTree(root -> left);
     printBTree(root -> right);
 }
+*/
+
+void printBTreeLevelWise(BinaryTreeNode<int> * root){
+    if(root == NULL){
+        return;
+    }
+
+    queue<BinaryTreeNode<int>*> pendingNodes;
+    pendingNodes.push(root);
+
+    while(pendingNodes.size() != 0){
+        BinaryTreeNode <int> * front = pendingNodes.front();
+        pendingNodes.pop();
+
+        cout<<front->data<<" : ";
+        // if(front->left){
+        // OR
+        if(front->left != NULL){
+            cout<<"L :"<<front->left->data<<" ";
+            pendingNodes.push(front->left);
+        }else{
+            cout<<"L :"<<-1<<" ";
+        }
+        if(front->right){
+            cout<<"R :"<<front->right->data;
+            pendingNodes.push(front->right);
+        }
+        else{
+            cout<<"R :"<<-1<<" ";
+        }
+        cout<<endl;
+
+    }
+}
 
 int main(){
     BinaryTreeNode<int>* root = inputBTLevelWise();
-    printBTree(root);
+    cout<<endl;
+    // printBTree(root);
+    printBTreeLevelWise(root);
     delete root;
 
     return 0;
