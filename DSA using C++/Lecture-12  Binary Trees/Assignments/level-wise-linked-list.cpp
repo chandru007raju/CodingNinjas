@@ -151,3 +151,81 @@ int main() {
         print(ans[i]);
     }
 }
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+#include<vector>
+template<typename T>
+class Node{
+    public:
+    T data;
+    Node * next;
+
+    Node(data){
+        this.data = data;
+        next = NULL;
+    }
+};
+
+/********************************************************************************/
+
+//    PRACTICE --->
+/*
+
+vector<Node<int> *> Create(BinaryTreeNode<int> * root){
+
+    vector <Node<int>*> arr;
+
+    if(root == NULL ){
+     
+        return arr;
+    }
+
+    queue<BinaryTreeNode<int>*> pendingNodes;
+    pendingNodes.push(root);
+    pendingNodes.push(NULL);
+    Node<int> * head = NULL;
+    Node<int>* tail = NULL;
+    bool newNode = true;
+
+    while(!pendingNodes.empty()){
+        BinaryTreeNode<int> * front =pendingNodes.front();
+        pendingNodes.pop();
+
+        if(front == NULL){
+            if(pendingNodes.empty()){
+                arr.push_back(head);
+                break;
+            }
+            arr.push_back(head);
+            head = tail = NULL;
+            newNode = true;
+            pendingNodes.push(NULL);
+        }
+        else
+        {
+            if(newNode){
+                head = new Node<int> (front->data);
+                newNode = false;
+                head = tail = n;
+                tail = n;
+            }else{
+                Node<int>* n = new Node<int> (front->data);
+                tail ->next =  n;
+                tail = n;
+            }
+            if(root->left != NULL){
+                pendingNodes.push(root->left);
+            }
+            if(root->right != NULL){
+                pendingNodes.push(root->right);
+            }
+        }
+    }
+    return arr;
+}
+*/
+
+
+
+
