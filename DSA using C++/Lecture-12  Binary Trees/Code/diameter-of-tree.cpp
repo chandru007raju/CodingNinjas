@@ -8,13 +8,14 @@ int max(int x, int y){
     return x > y ? x : y;
 }
 
-int height(BinaryTreeNode<int>* root){
+int height(BinaryTreeNode<int>* root){ 
     if (root == NULL){
         return 0;
     }
     return max(height(root -> left), height(root -> right)) + 1;
 }
-int diameter(BinaryTreeNode<int>* root){
+
+int diameter(BinaryTreeNode<int>* root){  //  --> Time Complexity -> O(n^2) Or O(n ^ h)
     if (root == NULL){
         return 0;
     }
@@ -63,7 +64,7 @@ BinaryTreeNode<int> *takeInput()
     return root;
 }
 
-pair<int, int> heightDiameter(BinaryTreeNode<int>* root){
+pair<int, int> heightDiameter(BinaryTreeNode<int>* root){ // Time Complexity --> O(n);
     if (root == NULL){
         pair<int, int> p;
         p.first = 0;
@@ -94,3 +95,33 @@ int main(){
     cout << "\n" << heightDiameter(root).second;
     return 0;
 }
+
+////  PRACTICE --> -->
+/*
+pair<int,int> heightDiameter(BinaryTreeNode<int> * root){
+    if(root ==  NULL){
+        pair<int,int> p;
+        p.first = 0;
+        p.second = 0;
+        return p;
+    }
+
+    pair<int,int> LeftDiameter = heightDiameter(root->left);
+    pair<int,int> RightDiameter = heightDiameter(root->right);
+
+    int lefth = LeftDiameter.first;
+    int leftD = LeftDiameter.second;
+    int righth = RightDiameter.first;
+    int rightD = RightDiameter.second;
+
+    int height = 1 + max(lefth,righth);
+    int diameter = max(lefth + righth,max(leftD,rightD));
+
+    pair <int,int> ans;
+    ans.first = height;
+    ans.second = diameter;
+
+    return ans;
+
+}
+*/

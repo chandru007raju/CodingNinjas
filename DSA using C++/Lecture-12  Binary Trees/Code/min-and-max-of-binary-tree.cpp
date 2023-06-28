@@ -121,3 +121,68 @@ int main()
     pair<int, int> ans = getMinAndMax(root);
     cout << ans.first << " " << ans.second;
 }
+
+/////////////////////////////////////////////////////////////////////
+
+// PRACTICE --> --> 
+
+// pair<int,int> getMinAndMax(BinaryTreeNode<int> * root){
+
+//     if(root->left == NULL  || root->right == NULL){
+//         pair<int,int> p;
+//         p.first = root->data;
+//         p.second = root->data;
+//     }
+//     pair<int,int> ans;
+//     ans.first = root->data;
+//     ans.second = root->data;
+
+//     // pair<int,int> LeftAns = getMinAndMax(root->left); // Need To Include The Check for Null for root->left
+//     // pair<int,int> RightAns = getMinAndMax(root->right);// Need To Include The Check for Null for root->right
+
+
+//     if(root->left != NULL){
+//     pair<int,int> LeftAns = getMinAndMax(root->left); 
+//     ans.first = min(ans.first,LeftAns.first);
+//     ans.second = max(ans.second,LeftAns.second);
+//     }
+
+//     if(root->right != NULL){
+//     pair<int,int> RightAns = getMinAndMax(root->left); 
+//     ans.first = min(ans.first,RightAns.first);
+//     ans.second = max(ans.second,RightAns.second);
+//     }
+
+//     // Use Less Coding That You Have Done -->
+//     /*
+    
+//     int LMin = LeftAns.first;
+//     int LMax = LeftAns.second;
+
+//     int RMin = RightAns.first;
+//     int RMax = RightAns.second;
+
+//     int Minimum,Maximum;
+//     if( LMin < RMin){ // Rather Than This If And Else We could have used the Min And Max functions
+//         Minimum = LMin;
+//     }else{
+//         Minimum = RMin;
+//     }
+
+//     if( LMax > RMax){  // Rather Than This If And Else We could have used the Min And Max functions
+//         Maximum = LMax;
+//     }else{
+//         Maximum = RMax;
+//     }
+
+//     if(Minimum < ans.first){  // Rather Than This If And Else We could have used the Min And Max functions
+//         ans.first = Minimum;
+//     }
+//     if(Maximum > ans.second){
+//         ans.second = Maximum;
+//     }
+//     */
+
+//     return ans;
+
+// }
