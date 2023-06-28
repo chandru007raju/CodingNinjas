@@ -55,6 +55,8 @@ public:
 
 using namespace std;
 
+
+
 bool searchInBST(BinaryTreeNode<int> *root, int k)
 {
     if (root == NULL)
@@ -75,6 +77,7 @@ bool searchInBST(BinaryTreeNode<int> *root, int k)
         return searchInBST(root->left, k);
     }
 }
+    
 
 BinaryTreeNode<int> *takeInput()
 {
@@ -119,3 +122,24 @@ int main()
     cout << ((searchInBST(root, k)) ? "true" : "false");
     delete root;
 }
+
+/*********************************************************************/
+
+// PRACTICE ---> 
+/*
+bool searchInBST(BinaryTreeNode<int> *root, int k)
+{
+    if(root == NULL){
+        return false;
+    }
+    if(root->data == k){
+        return true;
+    }
+    if(root->data < k){
+        return searchInBST(root->right,k);
+    }else{
+        return searchInBST(root->left,k);
+    }
+}
+
+*/
