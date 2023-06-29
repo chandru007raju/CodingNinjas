@@ -1,81 +1,144 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-class Array{
-    int * data;
-    int nextIndex;
-    int capacity;
+template<typename T>
+class BinaryTreeNode 
+{
+    public:
+    int data;
+    BinaryTreeNode<int> * left;
+    BinaryTreeNode<int> * right;
 
+    BinaryTreeNode(int data)
+    {
+        this->data = data;
+        left = NULL;
+        right = NULL;
+    }
+};
+
+// PRACTICE --> PURPOSE -->
+/*
+class Node{
+    public:
+    int data;
+    Node<int> * next;
+
+    Node(int data){
+        this->data = data;
+        next = NULL;
+    }
+};
+class LinkedList
+{
+    public:
+    Node<int> * head; // PROPERTY --> this will have the address of Node that was first created
+    Node<int> * tail; // PROPERTY --> this will have the address of Node that was  last created;
+
+    LinkedList(int data){ // Constructor // FUNCTIONS -->
+        head = NULL;
+        tail = NULL;
+    }
+
+    ~LinkedList(){ // Destructor 
+        delete head;
+    }
+
+};
+*/
+
+class BST
+{
+    private: 
+    BinaryTreeNode<int> * node;
+
+    BinaryTreeNode<int> * insert(int data,BinaryTreeNode<int>* node)
+    {
+        if(node == NULL){
+            BinaryTreeNode<int>* newNode = new BinaryTreeNode<int> (data);
+            return newNode;
+        }
+
+        if(data < node->data)
+        {
+            node->left = insert(data,node->left);            
+        }
+        else
+        {
+            node->right = insert(data,node->right);
+        }
+
+        return node;
+
+    }
+
+    BinaryTreeNode<int>* deleteData(int data,BinaryTreeNode<int>* node)
+    {
+        if(node == NULL){
+            return NULL;
+        }
+
+        if(data < node->data)
+        {
+            node->left = (data,node->left);
+        }
+        else if( data > node->data)
+        {
+            node->right = deleteData(data,node->right);
+        }
+        else
+        {
+            if(node->left == NULL && node->right == NULL)
+            {
+                delete node;
+                return NULL;
+            }
+            else if(node->left == NULL)
+            {
+                BinaryTreeNode<int>* temp = node->right;
+                node->right = NULL;
+                delete node;
+                return temp;
+            }
+            else if(node->right == NULL)
+            {
+                BinaryTreeNode<int>* temp = node->left;
+                node->left = NULL;
+                delete node;
+                return temp;
+            }
+            else
+            {
+                BinaryTreeNode<int> * rightMinimum = node->right;
+                while(rightMinimum->left != NULL)
+                {
+                    rightMinimum = rightMinimum->left;
+                }
+                int minData = rightMinimum->data;
+                node->data = minData;
+                deleteData(minData,node->right);
+                return node;                
+            }
+
+        }
+
+    }
 
     public:
-
-    /*
-        Array(int totalSize){ // -->1 -->2 -->3 -->4
-        data = new int[totalSize];
-        nextIndex = 0;
-        capacity = totalSize;
+    BST(){
+        node = NULL;
     }
-    */
-    Array(){ // -->1 -->2 -->3 -->4
-        data = new int[4];
-        nextIndex = 0;
-        capacity = 4;
+    ~BST(){
+        delete root;
+    }
+    insert(int data){
+        return insert(data,this->node);
     }
 
-    // Previously we were doing this --> Static Memory
+    deleteData(int data){
+        return deleteData(data,this->node);
 
-    // void push(int A){
-    //     if(nextIndex == capacity){
-    //         cout<<"stack is Full"<<endl;            
-    //         return;
-    //     }
-    //     data[nextIndex] = A;
-    //     nextIndex++;
-    // }
-
-
-//  Previous --> Static Memory --> Now Dynamically -->
-
-    void push(int A){
-        if(nextIndex == capacity){
-            cout<<"stack is Full --> so we have increased the size of array dynamically and inserted ur element"<<endl;
-            int *newData = new int [capacity*2];
-            for (int i = 0; i < capacity; i++){
-                newData[i] = data[i];
-            }
-            delete[]data;
-            data = newData;
-            capacity = 2*capacity; // OR capacity *= 2
-        }
-        data[nextIndex] = A;
-        nextIndex++;
     }
 
 
-    int pop(){
-        if(nextIndex == 0){
-            cout<<"Stack Empty"<<endl;
-            return 0;
-        }
-        nextIndex--;
-        return data[nextIndex];
-    }
-
-    int size(){
-        return nextIndex;
-    }
-
-    bool isEmpty(){
-        return (nextIndex == 0);// if nextIndex == 0 the it returns true or 1;
-    }
-
-    int top(){
-        if(isEmpty()){
-            return 0;
-        }
-        else{
-            return data[nextIndex-1];
-        }
-    }
-    
 };
