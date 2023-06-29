@@ -218,8 +218,6 @@ int main()
 }
 
 
-
-
 // PRACTICE --> PURPOSE -->
 /*
 
@@ -267,7 +265,6 @@ class LinkedList
 };
 */
 
-
 /*
 class BST
 {
@@ -303,10 +300,12 @@ class BST
         if(data < node->data)
         {
             node->left = (data,node->left);
+            return node;
         }
         else if( data > node->data)
         {
             node->right = deleteData(data,node->right);
+            return node;
         }
         else
         {
@@ -345,6 +344,8 @@ class BST
         }
 
     }
+
+    
 
     public:
     BST(){
