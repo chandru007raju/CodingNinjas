@@ -1,6 +1,5 @@
 #include <iostream>
 #include <queue>
-#include <climits>
 using namespace std;
 
 template <typename T>
@@ -17,16 +16,13 @@ public:
         left = NULL;
         right = NULL;
     }
+
     ~BinaryTreeNode()
     {
         if (left)
-        {
             delete left;
-        }
         if (right)
-        {
             delete right;
-        }
     }
 };
 
@@ -68,39 +64,93 @@ BinaryTreeNode<int> *takeInput()
     return root;
 }
 
-#include <iostream>
-#include <climits>
-
-// min // max // height // isBST 
-
-#define GetPair pair<pair<int,int>,pair<int,bool>>
-#define mini first.first
-#define maxi first.second
-#define hi second.first
-#definr isBST second.second
-
-int helper(BinaryTreeNode<int>*root,int sum)
+void printLevelATNewLine(BinaryTreeNode<int> *root)
 {
-    if(!root)
+    if (root == NULL)
+    {
+        return;
+    }
+    queue<BinaryTreeNode<int> *> q;
+    q.push(root);
+    q.push(NULL);
+    while (!q.empty())
+    {
+        BinaryTreeNode<int> *first = q.front();
+        q.pop();
+        if (first == NULL)
+        {
+            if (q.empty())
+            {
+                break;
+            }
+            cout << endl;
+            q.push(NULL);
+            continue;
+        }
+        cout << first->data << " ";
+        if (first->left != NULL)
+        {
+            q.push(first->left);
+        }
+        if (first->right != NULL)
+        {
+            q.push(first->right);
+        }
+    }
+}
+
+int helper(BinaryTreeNode<int> *root, int sum)
+{
+    if (root == NULL)
     {
         return sum;
     }
-    sum = helper(root->right,sum);
+    sum = helper(root->right, sum);
     sum += root->data;
     root->data = sum;
-    sum = helper(root->left,sum);    
+    sum = helper(root->left, sum);
+    return sum;
 }
 
-
-
-void replaceGreaterNodes(BinaryTreeNode<int>* root)
+void replaceWithLargerNodesSum(BinaryTreeNode<int> *root)
 {
-    helper(root,0);
+    if (root == NULL)
+    {
+        return;
+    }
+    helper(root, 0);
 }
 
 int main()
 {
     BinaryTreeNode<int> *root = takeInput();
-    replaceGreaterNodes(root);
+    replaceWithLargerNodesSum(root);
+    printLevelATNewLine(root);
     delete root;
 }
+
+/*
+
+int helper(BinaryTreeNode<int> *root, int sum)
+{
+    if (root == NULL)
+    {
+        return sum;
+    }
+    sum = helper(root->right, sum);
+    sum += root->data;
+    root->data = sum;
+    sum = helper(root->left, sum);
+    return sum;
+}
+
+void replaceWithLargerNodesSum(BinaryTreeNode<int> *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    helper(root, 0);
+}
+
+*/ 
