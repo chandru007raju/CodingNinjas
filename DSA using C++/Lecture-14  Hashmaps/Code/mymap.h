@@ -25,6 +25,7 @@ template<typename V>
 class mymap
 {
     private:
+
         void rehash()
         {
             mapNode<V>**temp = buckets;
@@ -149,5 +150,9 @@ class mymap
             head = head->next;
         }  
         return 0;      
-    }    
+    }  
+    
+    double loadFactor(){
+        return (1.0 * count) / bucketsize;
+    } 
 };

@@ -18,4 +18,7 @@ int main()
     map.remove("unknown");
     cout<<map.size()<<endl;
 
+    cout<<map.getvalue("dimple")<<endl;
+    cout<<map.loadFactor();
+
 }

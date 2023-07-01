@@ -86,9 +86,6 @@ class ourmap{
         return count;
     }
 
-    double loadFactor(){
-        return (1.0 * count) / numBuckets;
-    }
 
     void insert(string key, V value){
         int bucketIndex = getBucketIndex(key);
