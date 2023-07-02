@@ -1,106 +1,23 @@
-#include <iostream>
-#include <queue>
-#include <climits>
-using namespace std;
-
-template <typename T>
-class BinaryTreeNode
-{
-public:
-    T data;
-    BinaryTreeNode<T> *left;
-    BinaryTreeNode<T> *right;
-
-    BinaryTreeNode(T data)
-    {
-        this->data = data;
-        left = NULL;
-        right = NULL;
-    }
-    ~BinaryTreeNode()
-    {
-        if (left)
-        {
-            delete left;
-        }
-        if (right)
-        {
-            delete right;
-        }
-    }
-};
-
-BinaryTreeNode<int> *takeInput()
-{
-    int rootData;
-
-    cin >> rootData;
-    if (rootData == -1)
-    {
-        return NULL;
-    }
-    BinaryTreeNode<int> *root = new BinaryTreeNode<int>(rootData);
-    queue<BinaryTreeNode<int> *> q;
-    q.push(root);
-    while (!q.empty())
-    {
-        BinaryTreeNode<int> *currentNode = q.front();
-        q.pop();
-        int leftChild, rightChild;
-
-        cin >> leftChild;
-        if (leftChild != -1)
-        {
-            BinaryTreeNode<int> *leftNode = new BinaryTreeNode<int>(leftChild);
-            currentNode->left = leftNode;
-            q.push(leftNode);
-        }
-
-        cin >> rightChild;
-        if (rightChild != -1)
-        {
-            BinaryTreeNode<int> *rightNode =
-                new BinaryTreeNode<int>(rightChild);
-            currentNode->right = rightNode;
-            q.push(rightNode);
-        }
-    }
-    return root;
-}
-
-#include <iostream>
-#include <climits>
-
-// min // max // height // isBST 
-
-#define GetPair pair<pair<int,int>,pair<int,bool>>
-#define mini first.first
-#define maxi first.second
-#define hi second.first
-#definr isBST second.second
-
-int helper(BinaryTreeNode<int>*root,int sum)
-{
-    if(!root)
-    {
-        return sum;
-    }
-    sum = helper(root->right,sum);
-    sum += root->data;
-    root->data = sum;
-    sum = helper(root->left,sum);    
-}
-
-
-
-void replaceGreaterNodes(BinaryTreeNode<int>* root)
-{
-    helper(root,0);
-}
-
-int main()
-{
-    BinaryTreeNode<int> *root = takeInput();
-    replaceGreaterNodes(root);
-    delete root;
-}
+// int subset(int * a,int n){ // 2 3 4 0 -4 2 3 --> 2,5 9,9, 5
+// // 6 3 -1 2  -4 3 1 -2 20
+//     unordered_map<int,int> mapp;
+//     int maxcount = 0;
+//     int numindex;
+//     int sum = 0;
+//     mapp[0] = -1; // meaning sum is zero for the index -1
+//     for(int i = 0;i< n;i++){
+//         int count = 0;
+//         sum += a[i];
+//         if(mapp.count(sum) > 0){
+//             numindex = mapp[sum];
+//             count = i - numindex;
+//             if(count > maxcount){
+//                 maxcount = count;
+//             }
+//         }
+//         else{
+//             mapp[sum] = i;
+//         }
+//     }
+//     return maxcount;
+// }
