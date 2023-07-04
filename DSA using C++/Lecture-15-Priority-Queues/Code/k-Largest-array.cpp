@@ -61,15 +61,19 @@ int main()
     cin >> size;
     int *input = new int[1 + size];
 
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < size; i++){
         cin >> input[i];
+    }
+        
 
     int k;
     cin >> k;
 
     vector<int> output = kLargest(input, size, k);
-    for (int i = 0; i < output.size(); i++)
-        cout << output[i] << endl;
+    for (int i = 0; i < output.size(); i++){
+        cout << output[i] << " ";
+    }
+        
 
     return 0;
 }
