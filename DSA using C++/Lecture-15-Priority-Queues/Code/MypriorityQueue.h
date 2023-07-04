@@ -185,6 +185,9 @@ public:
         maxpq.push_back(element);
 
         int childIndex = maxpq.size() - 1;
+        
+        //Up-Heapify
+
         while (childIndex > 0)
         {
 
