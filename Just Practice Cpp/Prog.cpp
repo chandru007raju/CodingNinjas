@@ -1,23 +1,34 @@
-// int subset(int * a,int n){ // 2 3 4 0 -4 2 3 --> 2,5 9,9, 5
-// // 6 3 -1 2  -4 3 1 -2 20
-//     unordered_map<int,int> mapp;
-//     int maxcount = 0;
-//     int numindex;
-//     int sum = 0;
-//     mapp[0] = -1; // meaning sum is zero for the index -1
-//     for(int i = 0;i< n;i++){
-//         int count = 0;
-//         sum += a[i];
-//         if(mapp.count(sum) > 0){
-//             numindex = mapp[sum];
-//             count = i - numindex;
-//             if(count > maxcount){
-//                 maxcount = count;
-//             }
-//         }
-//         else{
-//             mapp[sum] = i;
-//         }
-//     }
-//     return maxcount;
-// }
+#include <iostream>
+#include <queue>
+using namespace std;
+
+void kSortedArray(int arr[], int n, int k){
+
+    priority_queue<int> pq;
+    for(int i = 0; i < k; i++){
+        pq.push(arr[i]);
+    }
+    int j = 0;
+    for(int i = k; i < n ; i++){
+        arr[j++] = pq.top();
+        pq.pop();
+        pq.push(arr[i]);
+    }
+
+    while(!pq.empty()){
+        arr[j++] = pq.top();
+        pq.pop();
+    }
+}
+
+
+int main(){
+    int arr[] = {10, 12, 15, 9, 6};
+    int k = 3;
+    kSortedArray(arr, 5, 3);
+    for (int i = 0; i < 5; i++){
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
