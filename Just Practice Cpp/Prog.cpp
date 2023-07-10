@@ -1,70 +1,138 @@
 #include <iostream>
+#include <string>
 #include <vector>
-#include<queue>
+
 using namespace std;
 
-vector<int> mergekSortedArrays(vector<vector<int>*> input){
-    
-    priority_queue< pair<int,pair<int,int>> ,vector< pair<int,pair<int,int>> >,greater< pair<int,pair<int,int>> > > pq;
-
-    for(int i = 0; i < input.size();i++){
-        pair<int,pair<int,int>> p1;
-        p1.first = input[i]->at(0); // value at zero index of the current array;
-        p1.second.first = i; // arrNo --> that is first array or second or third ;
-        p1.second.second = 0; // index at current array; 
-
-        pq.push(p1);        
-    }
-    vector<int> ans;
-    while(!pq.empty()){
-        pair<int,pair<int,int>> temp = pq.top();
-        pq.pop();
-
-        ans.push_back(temp.first);
-        
-        int arrNo = temp.second.first;
-        int Index = temp.second.second + 1;
-
-        if(Index < input[arrNo]->size()){
-            
-            temp.first = input[arrNo]->at(Index);
-            temp.second.second = Index;
-            pq.push(temp);
-        }
-    }
-    return ans;
-}
-
-int main()
+class TrieNode
 {
 
-    int k;
-    cin >> k;
+public:
+    char data;
+    TrieNode **children;
+    bool isTerminal;
 
-    vector<vector<int> *> input;
-
-    for (int i = 1; i <= k; i++)
+    TrieNode(char data)
     {
-        int size;
-        cin >> size;
-
-        vector<int> *current = new vector<int>();
-        for (int j = 0; j < size; j++)
+        this->data = data;
+        children = new TrieNode *[26];
+        for (int i = 0; i < 26; i++)
         {
-            int element;
-            cin >> element;
-            current->push_back(element);
+            children[i] = NULL;
+        }
+        isTerminal = false;
+    }
+};
+
+class Trie
+{
+private:
+    TrieNode *root;
+
+public:
+    int count;
+
+    Trie()
+    {
+        this->count = 0;
+        root = new TrieNode('\0');
+    }
+
+    bool insertWord(TrieNode *root, string word)
+    {
+        // Base Case -->
+        if (word.length() == 0)
+        {
+            if (root->isTerminal == true)
+            {
+                return false;
+            }
+            else
+            {
+                root->isTerminal = true;
+                return true;
+            }
         }
 
-        input.push_back(current);
+        // Small Calculation -->
+        int index = word[0] - 'a';
+        TrieNode *child;
+        if (root->children[index] != NULL)
+        {
+            child = root->children[index];
+        }
+        else
+        {
+            child = new TrieNode(word[0]);
+            root->children[index] = child;
+        }
+
+        // Recursive Call -->
+        return insertWord(child, word.substr(1));
     }
 
-    vector<int> ans = mergekSortedArrays(input);
-
-    for (int i = 0; i < ans.size(); i++)
+    void insertWord(string word)
     {
-        cout << ans[i] << " ";
+        if (insertWord(root, word))
+        {
+            this->count++;
+        }
     }
+
+    // search Pattern helper
+    bool searchPattern(TrieNode *root, string word)
+    {
+        // Base Case -->
+        if (word.size() == 0)
+        {
+            return true;
+        }
+        // small Calculation -->
+        if (root->children[word[0] - 'a'] == NULL)
+        {
+            return false;
+        }
+        // recursive call -->
+        return searchPattern(root->children[word[0] - 'a'], word.substr(1));
+    }
+    // Main Search Function
+    bool searchPattern(string word)
+    {
+        return searchPattern(root, word);
+    }
+
+    bool PatternMatching(vector<string> vect, string pattern)
+    {
+        for (int i = 0; i < vect.size(); i++)
+        {
+            string word = vect[i]; 
+            for (int j = 0; j < word.size(); j++)// (dimple) --> inserted in 1st iteration . then d (imple) is inserted in 2nd iteration. then di (mple) is inserted in 3 rd iteration --> and so on  -->
+            {
+                insertWord(word.substr(j));
+            }
+        }
+        return searchPattern(pattern);
+    }
+};
+
+int main(){
+    Trie t;
+
+    int n;
+    cin>>n;
+
+    string pattern;
+    vector<string> vect;
+
+    for(int i = 0 ;i < n ;i++){
+        string word;
+        cin>> word;
+
+        vect.push_back(word);
+    }
+    cin>> pattern;
+
+    cout<<(t.PatternMatching(vect,pattern) ? "true" : " false");
 
     return 0;
 }
