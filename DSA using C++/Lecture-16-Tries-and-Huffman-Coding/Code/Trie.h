@@ -5,7 +5,7 @@ using namespace std;
 class Trie
 {
     private:
-    Trie * root;
+    TrieNode * root;
 
     void insertWord(TrieNode * root,string word){ // d i m p l e -->
 
