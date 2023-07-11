@@ -56,7 +56,7 @@ long long int helper(int n,long long int *arr){
         return arr[n];
     }
     int divisor=pow(10,9)+7;
-    long long int smallOutput=((helper(n-1,arr)*helper(n-1,arr))%divisor)+((helper(n-1,arr)*helper(n-2,arr))%divisor)+((helper(n-2,arr)*helper(n-1,arr))%divisor);
+    long long int smallOutput = ((helper(n-1,arr)*helper(n-1,arr))%divisor) + ((helper(n-1,arr)*helper(n-2,arr))%divisor) + ((helper(n-2,arr)*helper(n-1,arr))%divisor);
 	arr[n]=smallOutput%divisor;
     return arr[n];
 }
@@ -87,7 +87,7 @@ int main() {
 // Brute force -->
 int balancedBTs(int n){
     // base Case -->
-    if(n <= 0){
+    if(n <= 1){
         return 1;
     }
 

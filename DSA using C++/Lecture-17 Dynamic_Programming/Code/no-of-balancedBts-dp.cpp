@@ -61,3 +61,106 @@ int main()
     cin >> n;
     cout << balancedBTs(n);
 }
+
+/*.................................................................*/
+/*
+// Brute Force -->
+
+int balancedBTs(int n)
+{
+    // base case
+    if (n <= 1)
+    {
+        return 1;
+    }
+
+    // recursive call
+    int a = balancedBTs(n - 1);
+    int b = balancedBTs(n - 2);
+
+    // small calculation
+    int ans = a * a + a * b + b * a;
+
+    return ans;
+}
+
+// memoization -->
+
+int helper(int *arr, int n)
+{
+
+    // Base Case -->
+    if (n <= 1)
+    {
+        return 1;
+    }
+
+    if (arr[n] != -1)
+    {
+        return arr[n];
+    }
+
+    int mod = pow(10, 9) + 7;
+    int x = helper(arr, n - 1);
+    int y = helper(arr, n - 2);
+
+    int temp1 = ((int)(long)(x)*x) % mod;
+    int temp2 = ((int)2 * (long)(x)*y) % mod;
+    int smallans = (temp1 + temp2) % mod;
+
+    arr[n] = smallans;
+    return arr[n];
+}
+
+int balancedBTs(int n)
+{
+
+    int *arr = new int[n + 1];
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = -1;
+    }
+    int answer = helper(arr, n);
+    delete[] arr;
+    return answer;
+}
+*/
+
+/*.....................................................................*/
+
+/*
+// Dynamic Programming -->
+int balancedBts(int n)
+{
+    if (n == 1)
+    {
+        return 1;
+    }
+    if (n == 2)
+    {
+        return 3;
+    }
+
+    int *dp = new int[n + 1];
+    dp[1] = 1;
+    dp[2] = 3;
+
+    for (int i = 3; i <= n; i++)
+    {
+
+        int mod = pow(10, 9) + 7;
+        int x = dp[i - 1];
+        int y = dp[i - 2];
+
+        int temp1 = (int)(long(x) * x) % mod;
+        int temp2 = (int)(2 * (long)(x)*y) % mod;
+        int ans = (temp1 + temp2) % mod;
+
+        dp[i] = ans;
+    }
+    
+    int result = dp[n];
+    delete[]dp;
+    return result;
+}
+*/
