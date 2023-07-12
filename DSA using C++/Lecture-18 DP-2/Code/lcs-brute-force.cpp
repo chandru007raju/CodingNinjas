@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-int lcs(string s, string t){
+int lcs(string s, string t){   //  Time complexity --> O(2^ n)
     if (t.size() == 0 || s.size() == 0){
         return 0;
     }
