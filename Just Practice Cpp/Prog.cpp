@@ -1,36 +1,68 @@
+#include <iostream>
+#include <bits/stdc++.h>
 
-// Dp Approach --> Time and Space Complexity  --> O (m * n) -->
+using namespace std;
 
-int minCostPath(int ** input,int m, int n){
+int helper(int *Wi, int *Vi, int N, int **arr, int MaxWi)
+{ // Let Me try Out memoization -->
 
-    int ** output = new int* [m];
-    for(int i = 0; i < m; i++){
-        output[i] = new int[n];
+    // Base Case -->
+    if (N == 0 || MaxWi == 0)
+    {
+        return 0;
     }
-    // Fill last cell i.e destination -->
-    output[m-1][n-1] = input[m-1][n-1];
+    if(arr[])
 
-    // Fill Last row (right to Left) -->
-    for(int j = n-2; j>= 0; j--){
-        output[m-1][j] = output[m-1][j+1] + input[m-1][j];
-    }
-    //Fill last column (bottom to top) -->
-    for(int i = m-2; i >= 0; i--){
-        output[i][n-1] = output[i+1][n-1] + input[i][n-1];
+    // Recursive call -->
+    if (MaxWi < Wi[0])
+    {
+        return helper(Wi + 1, Vi + 1, N - 1, arr, MaxWi);
     }
 
-    //Fill remaining cells -->
-    for(int  i = m-2; i >= 0; i--){
-        for(int j = n-2; j >= 0; j--){
-            output[i][j] = input[i][j] +  min(output[i][j+1] , min(output[i+1][j], output[i+1][j+1]));
+    int a = helper(Wi + 1, Vi + 1, N - 1, arr, MaxWi);         // Wen u will not select the first item -->
+    int b = helper(Wi + 1, Vi + 1, N - 1, arr, MaxWi - Vi[0]); // Wen u select the firdt item -->
+
+    // Small Calculation -->
+    return max(a, b);
+}
+
+int KnapSack(int *Wi, int *Vi, int N, int MaxWi)
+{
+
+    int **arr = new int *[N + 1];
+    for (int i = 0; i <= N; i++)
+    {
+        arr[i] = new int [N + 1];
+        for (int j = 0; j < N; j++)
+        {
+            arr[i][j] = -1;
         }
     }
 
-    int ans = output[0][0];
-    for(int i = 0; i < m; i++){
-        delete[]output[i];
-    }
-    delete [] output;
-    return ans;
+    helper(Wi, Vi, N, MaxWi);
+}
 
+int main()
+{
+    int N;
+    cin >> N;
+
+    int *Wi = new int[N];
+    int *Vi = new int[N];
+    int MaxWi;
+
+    for (int i = 0; i < N; i++)
+    {
+        cin >> Wi[i];
+    }
+    for (int i = 0; i < N; i++)
+    {
+        cin >> Vi[i];
+    }
+
+    cin >> MaxWi;
+
+    cout << KnapSack(Wi, Vi, N, MaxWi);
+
+    return 0;
 }
